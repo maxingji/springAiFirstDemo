@@ -13,7 +13,7 @@ public class ChatController {
 
     public ChatController(ChatClient.Builder chatClientBuilder) {
         this.chatClient = chatClientBuilder
-                .defaultSystem("你是一个简洁、专业的AI助手，请用中文回答。")
+                .defaultSystem("You are a concise and professional AI assistant. Please respond in Chinese.")
                 .defaultOptions(
                         DashScopeChatOptions.builder()
                                 .withTopP(0.7)
@@ -23,7 +23,7 @@ public class ChatController {
     }
 
     @GetMapping("/ai/chat")
-    public String chat(@RequestParam(defaultValue = "你好，介绍一下你自己") String q) {
+    public String chat(@RequestParam(defaultValue = "Hello, please introduce yourself") String q) {
         return chatClient.prompt(q).call().content();
     }
 }
